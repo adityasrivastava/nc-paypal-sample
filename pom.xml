@@ -14,10 +14,24 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/com.paypal.sdk/rest-api-sdk -->
+    <!--<dependency>-->
+      <!--<groupId>com.paypal.sdk</groupId>-->
+      <!--<artifactId>rest-api-sdk</artifactId>-->
+      <!--<version>1.13.1</version>-->
+    <!--</dependency>-->
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
     <dependency>
-      <groupId>com.paypal.sdk</groupId>
-      <artifactId>rest-api-sdk</artifactId>
-      <version>LATEST</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.21</version>
     </dependency>
+
+    <dependency>
+      <groupId>com.newcycle.payflow</groupId>
+      <artifactId>payflow</artifactId>
+      <version>1.0</version>
+    </dependency>
+
   </dependencies>
 </project>
