@@ -41,7 +41,7 @@ public class PayFlowTest2 extends Transaction{
 
         // Create a new Payment Device - Credit Card data object.
         // The input parameters are Credit Card No. and Expiry Date for the Credit Card.
-        CreditCard cc = new CreditCard("5105105105105100", "0109");
+        CreditCard cc = new CreditCard("2221000000000009", "1219");
         cc.setCvv2("123");
 
         // Create a new Tender - Card Tender data object.
@@ -67,6 +67,7 @@ public class PayFlowTest2 extends Transaction{
                 System.out.println("RESULT = " + trxnResponse.getResult());
                 System.out.println("PNREF = " + trxnResponse.getPnref());
                 System.out.println("RESPMSG = " + trxnResponse.getRespMsg());
+                System.out.println("REQID = " + trans.getRequestId());
                 System.out.println("AUTHCODE = " + trxnResponse.getAuthCode());
                 System.out.println("AVSADDR = " + trxnResponse.getAvsAddr());
                 System.out.println("AVSZIP = " + trxnResponse.getAvsZip());

@@ -60,6 +60,7 @@ public class PayFlowSDKTest extends Transaction {
                 System.out.println("RESULT = " + TrxnResponse.getResult());
                 System.out.println("RESPMSG = " + TrxnResponse.getRespMsg());
                 System.out.println("TOKEN = " + Trans.getResponse().getEcSetResponse().getToken());
+                System.out.println("RESPONSESTRING = " +Trans.getResponse().getResponseString());
                 System.out.println("CORRELATIONID = " + TrxnResponse.getCorrelationId());
                 // If value is true, then the Request ID has not been changed and the original response
                 // of the original transction is returned.
