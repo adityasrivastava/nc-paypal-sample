@@ -8,7 +8,7 @@ public class Transaction {
     public static final String PARTNER = "PayPal";
     public static final String VENDOR = "adityasrivastavanewcycle";
     public static final String USER = "adityasrivastavanewcycle";
-    public static final String PASSWORD = "";
+    public static final String PASSWORD = "aditya123";
 
 
 }

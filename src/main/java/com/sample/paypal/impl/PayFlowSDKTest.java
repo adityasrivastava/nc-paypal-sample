@@ -34,11 +34,13 @@ public class PayFlowSDKTest extends Transaction {
         Invoice inv = new Invoice();
 
         // Set Amount.
-        Currency amt = new Currency(new Double(0));
+        Currency amt = new Currency(new Double(1));
         inv.setAmt(amt);
         inv.setOrderDesc("This is my order description");
 
-        ECSetRequest setRequest = new ECSetRequest("localhost", "localhost");
+//        ECSetRequest setRequest = new ECSetRequest("http://localhost.com", "http://localhost.com");
+        ECSetBARequest setRequest = new ECSetBARequest("http://www.myreturnurl.com", "http://www.mycancelurl.com",
+        		"MerchantInitiatedBilling", "Test Description", "any", "BACustom");
 
         PayPalTender paypalTender = new PayPalTender(setRequest);
 
