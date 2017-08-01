@@ -74,7 +74,7 @@ public class CreateProfile extends Transaction{
         RecurringInfo recurInfo = new RecurringInfo();
         // The date that the first payment will be processed.
         // This will be of the format mmddyyyy.
-        recurInfo.setStart("07252008");
+        recurInfo.setStart("09252017");
         recurInfo.setProfileName("Test_Profile_1");    // User provided Profile Name.
         // Specifies how often the payment occurs. All PAYPERIOD values must use
         // capital letters and can be any of WEEK / BIWK / SMMO / FRWK / MONT /
@@ -89,8 +89,8 @@ public class CreateProfile extends Transaction{
         recurInfo.setOptionalTrxAmt(oTrxAmt);
 
         // Create a new Recurring Add Transaction.
-        //RecurringAddTransaction trans = new RecurringAddTransaction(user, connection, inv, card, recurInfo, PayflowUtility.getRequestId());
-        ReferenceTransaction trans=new ReferenceTransaction("R","A11AA5DBB3DA",user,"FF3F525EC3ACFB98F0485AF594AA6B11");
+        RecurringAddTransaction trans = new RecurringAddTransaction(user, connection, inv, card, recurInfo, PayflowUtility.getRequestId());
+        //ReferenceTransaction trans=new ReferenceTransaction("R","R7X5A44794A9",user,"FF3F525EC3ACFB98F0485AF594AA6B11");
         // Use ORIGID to create a profile based on the details of another transaction. See Reference Transaction.
         //trans.setOrigId("<ORIGINAL_PNREF>");
 

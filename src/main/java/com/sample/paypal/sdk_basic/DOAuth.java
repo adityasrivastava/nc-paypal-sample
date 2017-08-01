@@ -1,24 +1,42 @@
-package com.sample.paypal.impl;
+package com.sample.paypal.sdk_basic;
 
+import com.sample.paypal.impl.Transaction;
 import paypal.payflow.*;
 
-/**
- * Created by adi on 28/07/17.
- */
-public class PayFlowTest2 extends Transaction{
+// This class uses the Payflow SDK Data Objects to do a simple Authorize transaction.
+// The request is sent as a Data Object and the response received is also a Data Object.
+
+public class DOAuth extends Transaction {
+    public DOAuth() {
+    }
 
     public static void main(String args[]) {
-
         System.out.println("------------------------------------------------------");
         System.out.println("Executing Sample from File: DOAuth.java");
         System.out.println("------------------------------------------------------");
 
+        // Payflow Pro Host Name. This is the host name for the PayPal Payment Gateway.
+        // For testing: 	pilot-payflowpro.paypal.com
+        // For production:  payflowpro.paypal.com
+        // DO NOT use payflow.verisign.com or test-payflow.verisign.com!
         SDKProperties.setHostAddress("pilot-payflowpro.paypal.com");
         SDKProperties.setHostPort(443);
         SDKProperties.setTimeOut(45);
 
+        // Logging is by default off. To turn logging on uncomment the following lines:
+        //SDKProperties.setLogFileName("payflow_java.log");
+        //SDKProperties.setLoggingLevel(PayflowConstants.SEVERITY_DEBUG);
+        //SDKProperties.setMaxLogFileSize(1000000);
+
+        // Uncomment the lines below and set the proxy address and port, if a proxy has to be used.
+        //SDKProperties.setProxyAddress("");
+        //SDKProperties.setProxyPort(80);
+        //SDKProperties.setProxyLogin("");
+        //SDKProperties.setProxyPassword("");
+
         // Create the Data Objects.
         // Create the User data object with the required user details.
+        //UserInfo user = new UserInfo("<user>", "<vendor>", "<partner>", "<password>");
         UserInfo user = new UserInfo(USER, VENDOR, PARTNER, PASSWORD);
 
         // Create the Payflow Connection data object with the required connection details.
@@ -41,7 +59,7 @@ public class PayFlowTest2 extends Transaction{
 
         // Create a new Payment Device - Credit Card data object.
         // The input parameters are Credit Card No. and Expiry Date for the Credit Card.
-        CreditCard cc = new CreditCard("2221000000000009", "1219");
+        CreditCard cc = new CreditCard("5105105105105100", "1219");
         cc.setCvv2("123");
 
         // Create a new Tender - Card Tender data object.
@@ -52,7 +70,7 @@ public class PayFlowTest2 extends Transaction{
         AuthorizationTransaction trans = new AuthorizationTransaction(
                 user, connection, inv, card, PayflowUtility.getRequestId());
 
-        trans.setPartialAuth("Y");
+           trans.setPartialAuth("Y");
 
         // Submit the Transaction
         Response resp = trans.submitTransaction();
@@ -67,13 +85,11 @@ public class PayFlowTest2 extends Transaction{
                 System.out.println("RESULT = " + trxnResponse.getResult());
                 System.out.println("PNREF = " + trxnResponse.getPnref());
                 System.out.println("RESPMSG = " + trxnResponse.getRespMsg());
-                System.out.println("REQID = " + trans.getRequestId());
                 System.out.println("AUTHCODE = " + trxnResponse.getAuthCode());
                 System.out.println("AVSADDR = " + trxnResponse.getAvsAddr());
                 System.out.println("AVSZIP = " + trxnResponse.getAvsZip());
                 System.out.println("IAVS = " + trxnResponse.getIavs());
                 System.out.println("CVV2MATCH = " + trxnResponse.getCvv2Match());
-                System.out.println("EXP_DATE = " + trxnResponse.getExpDate());
                 // If value is true, then the Request ID has not been changed and the original response
                 // of the original transction is returned.
                 System.out.println("DUPLICATE = " + trxnResponse.getDuplicate());
@@ -96,6 +112,4 @@ public class PayFlowTest2 extends Transaction{
             }
         }
     }
-
 }
-
