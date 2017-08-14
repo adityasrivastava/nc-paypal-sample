@@ -1,11 +1,12 @@
 package com.sample.paypal.sdk_basic;
 
+import com.sample.paypal.impl.Transaction;
 import paypal.payflow.*;
 
 // This class uses the Payflow SDK Data Objects to do a simple reference Credit transaction.
 // The request is sent as a Data Object and the response received is also a Data Object.
 
-public class DOReferenceCredit {
+public class DOReferenceCredit extends Transaction {
     public DOReferenceCredit() {
     }
 
@@ -33,7 +34,8 @@ public class DOReferenceCredit {
 
         // Create the Data Objects.
         // Create the User data object with the required user details.
-        UserInfo user = new UserInfo("<user>", "<vendor>", "<partner>", "<password>");
+        //UserInfo user = new UserInfo("<user>", "<vendor>", "<partner>", "<password>");
+        UserInfo user = new UserInfo(USER, VENDOR, PARTNER, PASSWORD);
 
         // Create the Payflow Connection data object with the required connection details.
 
@@ -51,8 +53,8 @@ public class DOReferenceCredit {
 
         // Create a new Credit Transaction from the original transaction.  See above if you
         // need to change the amount.
-        CreditTransaction trans = new CreditTransaction("<ORIG_TRANS_ID>", user, connection, PayflowUtility.getRequestId());
-
+        CreditTransaction trans = new CreditTransaction("A71AA4484294", user, connection, PayflowUtility.getRequestId());
+        System.out.println("TENDER: "+ trans.getTender());
         // Submit the Transaction
         Response resp = trans.submitTransaction();
 

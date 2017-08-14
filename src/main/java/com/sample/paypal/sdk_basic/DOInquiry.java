@@ -58,7 +58,7 @@ public class DOInquiry extends Transaction{
         // Create a new Inquiry Transaction.
         // Replace <PNREF> with a previous transaction ID that you processed on your account.
         InquiryTransaction trans = new InquiryTransaction("A71AA4484294", user, connection, PayflowUtility.getRequestId());
-
+        System.out.println("TENDER: "+trans.getTender());
         // To use CUSTREF instead of PNREF you need to set the CustRef and include the INVOICE object in your
         // request.  Since you will be using CUSTREF instead of PNREF, PNREF will be "" (null).
         // Create a new Invoice data object with the Amount, Billing Address etc. details.
@@ -72,7 +72,7 @@ public class DOInquiry extends Transaction{
 
         // Submit the Transaction
         Response resp = trans.submitTransaction();
-
+        System.out.println("A:" +resp.getTransactionResponse().getCardSecure());
         // Display the transaction response parameters.
         if (resp != null) {
             // Get the Transaction Response parameters.
